@@ -3,6 +3,9 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # http://www.bergspot.com/blog/2012/02/how-to-fix-warning-setlocale-lc_ctype-cannot-change-locale-utf-8/
 export LC_CTYPE="en_US.UTF-8"
 
+#PS1='\h:\W \u\$'
+export PS1='\u@\h:\w$(__git_ps1 " (%s)")> '
+
 export PATH=/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 
