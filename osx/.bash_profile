@@ -36,5 +36,9 @@ bind -m vi-insert "\C-n":menu-complete
 # ^l clear screen
 bind -m vi-insert "\C-l":clear-screen
 
+# Git
+export LESS="-erX"
+export GIT_PS1_SHOWDIRTYSTATE=true
+
 # Load RVM into a shell session
 [[ -s "/Users/tapichu/.rvm/scripts/rvm" ]] && source "/Users/tapichu/.rvm/scripts/rvm"
