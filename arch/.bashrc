@@ -1,0 +1,101 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Env variables
+#PS1='[\u@\h \W]\$ '
+#PS1='$(ppwd \l)\u@\h:\w$(__git_ps1 " (%s)")> '
+export PS1='\u@\h:\w$(__git_ps1 " (%s)")> '
+export LS_OPTIONS='-N --color=tty -T 0'
+export EDITOR=/usr/bin/vim
+export PAGER=less
+export VMAIL_BROWSER=google-chrome
+export PATH=~/bin:$PATH
+
+# Bash history
+export HISTCONTROL=ignoredups
+
+# Alias
+test -s ~/.alias && . ~/.alias || true
+
+# Bash VI mode
+# http://www.jukie.net/bart/blog/20040326082602
+set -o vi
+set editing-mode vi
+set keymap vi
+set convert-meta on
+# ^p check for partial match in history
+bind -m vi-insert "\C-p":dynamic-complete-history
+# ^n cycle through the list of partial matches
+bind -m vi-insert "\C-n":menu-complete
+# ^l clear screen
+bind -m vi-insert "\C-l":clear-screen
+
+# Git
+export LESS="-erX"
+export GIT_PS1_SHOWDIRTYSTATE=true
+source ~/bin/git-completion.bash
+
+# Ruby
+export RI="--format ansi --width 100"
+
+# Faxien, Sinan, Erlware
+# export PATH=/opt/erlware/bin:$PATH
+
+# Coloured man pages
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;37m") \
+        LESS_TERMCAP_md=$(printf "\e[1;37m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;47;30m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[0;36m") \
+            man "$@"
+}
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+export COMP_WORDBREAKS
+
+if complete &>/dev/null; then
+  _npm_completion () {
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${COMP_WORDS[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -F _npm_completion npm
+elif compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###
