@@ -1,0 +1,40 @@
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+# http://www.bergspot.com/blog/2012/02/how-to-fix-warning-setlocale-lc_ctype-cannot-change-locale-utf-8/
+export LC_CTYPE="en_US.UTF-8"
+
+export PATH=/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export NODE_PATH=/usr/local/lib/node_modules
+
+export PYTHON_PREFIX=/usr/local
+export MAVEN_OPTS="-Xmx512m"
+
+# AWS EC2
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
+export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
+export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.5/jars"
+
+# Aliases
+source $HOME/.alias
+
+# Bash completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+# Bash VI mode
+# http://www.jukie.net/bart/blog/20040326082602
+set -o vi
+set editing-mode vi
+set keymap vi
+set convert-meta on
+# ^p check for partial match in history
+bind -m vi-insert "\C-p":dynamic-complete-history
+# ^n cycle through the list of partial matches
+bind -m vi-insert "\C-n":menu-complete
+# ^l clear screen
+bind -m vi-insert "\C-l":clear-screen
+
+# Load RVM into a shell session
+[[ -s "/Users/tapichu/.rvm/scripts/rvm" ]] && source "/Users/tapichu/.rvm/scripts/rvm"
