@@ -6,7 +6,7 @@ export LC_CTYPE="en_US.UTF-8"
 #PS1='\h:\W \u\$'
 export PS1='\u@\h:\w$(__git_ps1 " (%s)")> '
 
-export PATH=/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/Cellar/vim/7.3.548/bin:/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
 
 export PYTHON_PREFIX=/usr/local
