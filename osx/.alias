@@ -7,6 +7,7 @@ alias la='ls -la'
 alias ll='ls -l'
 alias lld='ll --group-directories-first'
 alias grep='grep --color=auto'
+alias mutt='cd ~/Desktop && mutt'
 
 alias gvim='mvim'
 alias gvimdiff='mvimdiff'
@@ -14,3 +15,10 @@ alias gvimdiff='mvimdiff'
 alias wlst='rlwrap /opt/oracle/wls1034/wlserver_10.3/common/bin/wlst.sh'
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+alias mcpst="mvn clean package -DskipTests -DskipITs"
+alias mcp="mvn clean package"
+alias mcv="mvn clean verify"
+alias mct="mvn clean test"
+
+alias unam="cd Dropbox/documents/maestria/unam"
