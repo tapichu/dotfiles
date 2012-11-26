@@ -21,4 +21,4 @@ alias mcp="mvn clean package"
 alias mcv="mvn clean verify"
 alias mct="mvn clean test"
 
-alias unam="cd Dropbox/documents/maestria/unam"
+alias unam="cd ~/Dropbox/documents/maestria/unam/semestres/01/"
