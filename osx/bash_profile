@@ -4,7 +4,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export LC_CTYPE="en_US.UTF-8"
 
 #PS1='\h:\W \u\$'
-export PS1='\u@\h:\W$(__git_ps1 " (%s)")> '
+PS1='\u@\h:\W$(__git_ps1 " (%s)")> '
+export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 export PATH=/usr/local/Cellar/vim/7.3.548/bin:/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
