@@ -1,11 +1,12 @@
 # General
+
+alias ..='cd ..'
+alias ...='cd ../..'
 alias l='ls -alF'
 alias la='ls -la'
 alias ll='ls -l'
 alias lld='ll --group-directories-first'
 alias ls='ls $LS_OPTIONS'
-alias ..='cd ..'
-alias ...='cd ../..'
 alias grep="grep --color=auto"
 
 # Skype video
@@ -13,3 +14,6 @@ alias skype-video='LD_PRELOAD=/usr/lib32/libv4l/v4l1compat.so skype'
 
 # Titanium
 alias titanium='python2 $HOME/.titanium/mobilesdk/linux/1.7.2/titanium.py'
+
+# File system
+alias unam="cd ~/Dropbox/documents/maestria/semestres/02/"
