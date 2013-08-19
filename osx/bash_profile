@@ -12,6 +12,7 @@ PS1='\u@\h:\W$(__git_ps1 " (%s)")> '
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 export PATH=/usr/local/Cellar/vim/7.3.548/bin:/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+
 export NODE_PATH=/usr/local/lib/node_modules
 export CLOJURESCRIPT_HOME=/Users/tapichu/code/clojure/clojurescript
 export PATH=$CLOJURESCRIPT_HOME/bin:$PATH
@@ -55,6 +56,21 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 if [ -f `brew --prefix git`/share/git-core/contrib/completion/git-prompt.sh ]; then
     . `brew --prefix git`/share/git-core/contrib/completion/git-prompt.sh
 fi
+
+# Marks
+export MARKPATH=$HOME/.marks
+function jump {
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+function unmark {
+    rm -i $MARKPATH/$1
+}
+function marks {
+    ls -l $MARKPATH | gsed 's/  / /g' | cut -d' ' -f9- | gsed 's/ -/\t-/g' && echo
+}
 
 # Load RVM into a shell session
 [[ -s "/Users/tapichu/.rvm/scripts/rvm" ]] && source "/Users/tapichu/.rvm/scripts/rvm"
