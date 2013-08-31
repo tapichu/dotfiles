@@ -86,5 +86,9 @@ function _completemarks {
 complete -F _completemarks jump
 complete -F _completemarks unmark
 
+# Perlbrew
+source ~/perl5/perlbrew/etc/bashrc
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
 # Load RVM into a shell session
 [[ -s "/Users/tapichu/.rvm/scripts/rvm" ]] && source "/Users/tapichu/.rvm/scripts/rvm"
