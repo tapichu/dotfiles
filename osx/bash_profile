@@ -11,7 +11,7 @@ export LC_CTYPE="en_US.UTF-8"
 PS1='\u@\h:\W$(__git_ps1 " (%s)")> '
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-export PATH=/usr/local/Cellar/vim/7.3.548/bin:/usr/local/share/python:/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 export NODE_PATH=/usr/local/lib/node_modules
 export CLOJURESCRIPT_HOME=/Users/tapichu/code/clojure/clojurescript
@@ -57,20 +57,34 @@ if [ -f `brew --prefix git`/share/git-core/contrib/completion/git-prompt.sh ]; t
     . `brew --prefix git`/share/git-core/contrib/completion/git-prompt.sh
 fi
 
-# Marks
+# Easily jump around the file system by manually adding marks
+# marks are stored as symbolic links in the directory $MARKPATH (default $HOME/.marks)
+#
+# jump FOO: jump to a mark named FOO
+# mark FOO: create a mark named FOO
+# unmark FOO: delete a mark
+# marks: lists all marks
+
 export MARKPATH=$HOME/.marks
 function jump {
-    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
 function mark {
-    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+    mkdir -p "$MARKPATH"; ln -s "$(pwd)" $MARKPATH/$1
 }
 function unmark {
-    rm -i $MARKPATH/$1
+    rm -i "$MARKPATH/$1"
 }
 function marks {
-    ls -l $MARKPATH | gsed 's/  / /g' | cut -d' ' -f9- | gsed 's/ -/\t-/g' && echo
+    ls -l "$MARKPATH" | gsed 's/  / /g' | cut -d' ' -f9- | gsed 's/ -/\t-/g' && echo
 }
+
+function _completemarks {
+    COMPREPLY=($(ls $MARKPATH | grep "$2"))
+}
+
+complete -F _completemarks jump
+complete -F _completemarks unmark
 
 # Load RVM into a shell session
 [[ -s "/Users/tapichu/.rvm/scripts/rvm" ]] && source "/Users/tapichu/.rvm/scripts/rvm"
