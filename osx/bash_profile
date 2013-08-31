@@ -31,8 +31,8 @@ export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.5/jars"
 test -s ~/.alias && source ~/.alias || true
 
 # Bash completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
 
 # Bash VI mode
@@ -53,8 +53,8 @@ export LESS="-erX"
 export GIT_PS1_SHOWDIRTYSTATE=true
 
 # Git prompt
-if [ -f `brew --prefix git`/share/git-core/contrib/completion/git-prompt.sh ]; then
-    . `brew --prefix git`/share/git-core/contrib/completion/git-prompt.sh
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+    . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
 # Easily jump around the file system by manually adding marks
