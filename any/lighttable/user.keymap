@@ -12,7 +12,9 @@
 
 {:+ {:app {"cmd-shift-t" [:workspace.show]
            "cmd-shift-c" [:toggle-console]
+           "cmd-shift-x" [:show-connect]
            "cmd-shift-v" [:tabset.new]
+           "ctrl-m" [:window.fullscreen]
            "ctrl-h" [:tabset.prev]
            "ctrl-l" [:tabset.next]
            "ctrl-shift-h" [:tabs.move-prev-tabset]
@@ -21,10 +23,17 @@
      :editor {"alt-w" [:editor.watch.watch-selection]
               "alt-shift-w" [:editor.watch.unwatch]}
 
-     :editor.clj {"cmd-e" [(:eval.custom "(macroexpand-1 '__SELECTION__)" {:result-type :inline})]}
+     :editor.clj {"cmd-e" [(:eval.custom "(macroexpand-1 '__SELECTION__)" {:result-type :inline})]
+                  "alt-m" [(:editor.watch.custom-watch-selection
+                            "(let [start (System/currentTimeMillis)
+                                   res (do __SELECTION__)]
+                               __|(str (- (System/currentTimeMillis) start) \" ms\")|__
+                               res)" {:class "timed" :verbatim true})]}
 
      :editor.keys.vim.normal {"cmd-d" [:editor.doc.toggle]
                               ">" [:paredit.grow.right]
                               "<" [:paredit.shrink.right]
                               "alt-shift-." [:paredit.shrink.left]
-                              "alt-shift-," [:paredit.grow.left]}}}
+                              "alt-shift-," [:paredit.grow.left]}
+
+     :editor.keys.vim.insert {"ctrl-n" [:auto-complete]}}}
