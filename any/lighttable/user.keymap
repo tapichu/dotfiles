@@ -10,10 +10,11 @@
 ;; of all the commands you can execute, start typing a word related to the thing you
 ;; want to do in between the square brackets (e.g. type "editor").
 
-{:+ {:app {"cmd-shift-t" [:workspace.show]
+{:+ {:app {"cmd-shift-w" [:workspace.show]
            "cmd-shift-c" [:toggle-console]
            "cmd-shift-x" [:show-connect]
-           "cmd-shift-v" [:tabset.new]
+           "cmd-shift-t" [:tabset.new]
+           "cmd-shift-w" [:tabset.close]
            "ctrl-m" [:window.fullscreen]
            "ctrl-h" [:tabset.prev]
            "ctrl-l" [:tabset.next]
