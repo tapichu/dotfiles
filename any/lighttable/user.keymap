@@ -33,8 +33,8 @@
 
      :editor.keys.vim.normal {"cmd-d" [:editor.doc.toggle]
                               ">" [:paredit.grow.right]
-                              "<" [:paredit.shrink.right]
-                              "alt-shift-." [:paredit.shrink.left]
-                              "alt-shift-," [:paredit.grow.left]}
+                              "alt-shift-." [:paredit.shrink.right]
+                              "<" [:paredit.grow.left]
+                              "alt-shift-," [:paredit.shrink.left]}
 
      :editor.keys.vim.insert {"ctrl-n" [:auto-complete]}}}
