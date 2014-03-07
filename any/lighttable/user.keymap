@@ -31,7 +31,7 @@
                                __|(str (- (System/currentTimeMillis) start) \" ms\")|__
                                res)" {:class "timed" :verbatim true})]}
 
-     :editor.keys.vim.normal {"cmd-d" [:editor.doc.toggle]
+     :editor.keys.vim.normal {"ctrl-d" [:passthrough]
                               ">" [:paredit.grow.right]
                               "alt-shift-." [:paredit.shrink.right]
                               "<" [:paredit.grow.left]

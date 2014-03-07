@@ -16,6 +16,7 @@
 
      ;; The editor tag is applied to all editors
      :editor [:lt.plugins.vim/activate-vim
+              (:lt.plugins.vim/map-keys {"K" ":ltexec editor.doc.toggle"})
               :lt.objs.editor/no-wrap
               :lt.objs.editor/line-numbers
               :lt.objs.editor/scroll-past-end
