@@ -16,11 +16,7 @@ templates:
     wrap_width: 88
   recent:
     date_format: ! '%_I:%M%P'
-    template: ! '%shortdate: %title'
-    wrap_width: 88
-  recent:
-    date_format: ! '%_I:%M%P'
-    template: ! '%shortdate: %title'
+    template: ! "%hr\n%shortdate\n > %title%odnote"
     wrap_width: 88
 views:
   sample:
