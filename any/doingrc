@@ -4,32 +4,32 @@ current_section: Currently
 templates:
   default:
     date_format: "%Y-%m-%d %H:%M"
-    template: "%date %boldgreen| %boldwhite%title%default%note"
-    wrap_width: 0
+    template: "%date %boldgreen| %boldwhite%title%default%odnote"
+    wrap_width: 88
   today:
     date_format: "%_I:%M%P"
-    template: "%date %boldgreen| %boldwhite%title%default%note"
-    wrap_width: 0
+    template: "%date %boldgreen| %boldwhite%title%default%odnote"
+    wrap_width: 88
   last:
     date_format: "%-I:%M%P on %a"
     template: "%title (at %date)%odnote"
     wrap_width: 88
   recent:
     date_format: "%_I:%M%P"
-    template: "%date %boldgreen| %boldwhite%title%default%note"
+    template: "%date %boldgreen| %boldwhite%title%default%odnote"
     wrap_width: 88
 views:
   sample:
     date_format: "%_I:%M%P"
-    template: "%date | %title%note"
-    wrap_width: 0
+    template: "%date | %title%odnote"
+    wrap_width: 88
     section: section_name
     count: 5
   color:
     date_format: "%F %_I:%M%P"
     section: Currently
     count: 10
-    wrap_width: 0
-    template: "%date %boldgreen| %boldwhite%title%default%note"
+    wrap_width: 88
+    template: "%date %boldgreen| %boldwhite%title%default%odnote"
 :include_notes: true
 editor_app: 
