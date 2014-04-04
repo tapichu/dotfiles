@@ -16,6 +16,7 @@
            "cmd-shift-t" [:tabset.new]
            "cmd-shift-r" [:tabset.close]
            "ctrl-m" [:window.fullscreen]
+           "ctrl-t" [:tabset.new]
            "ctrl-h" [:tabset.prev]
            "ctrl-l" [:tabset.next]
            "ctrl-shift-h" [:tabs.move-prev-tabset]
