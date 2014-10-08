@@ -1,4 +1,4 @@
-{:user {:plugins [[cider/cider-nrepl "0.7.0-SNAPSHOT"]
+{:user {:plugins [[cider/cider-nrepl "0.7.0"]
                   [codox "0.8.10"]
                   [jonase/eastwood "0.1.4"]
                   [lein-iclojure "1.2"]
