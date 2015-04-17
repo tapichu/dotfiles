@@ -1,30 +1,13 @@
 # My aliases
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias l='ls -alF'
 alias la='ls -la'
+alias lh='ls -lh'
 alias ll='ls -l'
 alias lld='ll --group-directories-first'
 alias grep='grep --color=auto'
-alias mutt='cd ~/Desktop && mutt'
-
-# Vim
-alias gvim='mvim'
-alias gvimdiff='mvimdiff'
+alias j='jump'
 
 # Tmux
 alias tmux="TERM=screen-256color-bce tmux"
-
-# Maven
-alias mcpst="mvn clean package -DskipTests -DskipITs"
-alias mcp="mvn clean package"
-alias mcv="mvn clean verify"
-alias mct="mvn clean test"
-
-# File system
-alias unam="cd ~/Dropbox/documents/maestria/unam/semestres/02/"
-
-# Apps
-alias wlst='rlwrap /opt/oracle/wls1034/wlserver_10.3/common/bin/wlst.sh'
-alias clips='rlwrap /Applications/CLIPS/CLIPS\ Console'

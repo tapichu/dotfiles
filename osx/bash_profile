@@ -11,23 +11,12 @@ export LC_CTYPE="en_US.UTF-8"
 PS1='\u@\h:\W$(__git_ps1 " (%s)")> '
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-export PATH=/Applications/eclipse:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
-
 export EDITOR=vim
 
-export NODE_PATH=/usr/local/lib/node_modules
-export CLOJURESCRIPT_HOME=/Users/tapichu/code/clojure/clojurescript
-export PATH=$CLOJURESCRIPT_HOME/bin:$PATH
-
 export PYTHON_PREFIX=/usr/local
-export MAVEN_OPTS="-Xmx512m"
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
-
-# AWS EC2
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.5/jars"
+export NODE_PATH=/usr/local/lib/node_modules
+export CLOJURESCRIPT_HOME=$HOME/code/clojure/clojurescript
+export PATH=$CLOJURESCRIPT_HOME/bin:$PATH
 
 # Aliases
 test -s ~/.alias && source ~/.alias || true
@@ -49,6 +38,7 @@ bind -m vi-insert "\C-p":dynamic-complete-history
 bind -m vi-insert "\C-n":menu-complete
 # ^l clear screen
 bind -m vi-insert "\C-l":clear-screen
+bind -m vi-command "\C-l":clear-screen
 
 # Git
 export LESS="-erX"
@@ -88,9 +78,5 @@ function _completemarks {
 complete -F _completemarks jump
 complete -F _completemarks unmark
 
-# Perlbrew
-source ~/perl5/perlbrew/etc/bashrc
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-
-# Load RVM into a shell session
-[[ -s "/Users/tapichu/.rvm/scripts/rvm" ]] && source "/Users/tapichu/.rvm/scripts/rvm"
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
