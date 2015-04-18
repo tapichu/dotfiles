@@ -1,6 +1,7 @@
 # If not running interactively, do not do anything
-[[ $- != *i* ]] && return
-[[ $TERM != screen* ]] && exec tmux
+[[ "$-" != *i* ]] && return
+# [[ -z "$TMUX" ]] && exec tmux
+tmux has-session -t $USER 2>/dev/null || tmux new-session -d -s $USER
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
